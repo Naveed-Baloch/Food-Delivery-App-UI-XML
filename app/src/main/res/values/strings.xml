@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Food AppUI</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="food_delivery">Food Delivery</string>
+    <string name="cart">Cart(5)</string>
+    <string name="search_food_or_restaurant">Search Food or Restaurant</string>
+    <string name="recent_orders">Recent Orders</string>
+    <string name="distance">0.3 km away</string>
+    <string name="restaurants">Restaurants</string>
+    <string name="reviews">Reviews</string>
+    <string name="contact">Contact</string>
+    <string name="menu">Menu</string>
+</resources>
