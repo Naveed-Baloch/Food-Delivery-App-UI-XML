@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodappui.R
 import com.example.foodappui.model.Restaurant
 import com.example.foodappui.ui.HomeFragmentDirections
+import kotlinx.android.synthetic.main.restaurant_item.view.*
 
 class RestaurantAdapter(private val dataSet: List<Restaurant>) :
     RecyclerView.Adapter<RestaurantAdapter.ViewHolder>() {
@@ -19,12 +21,14 @@ class RestaurantAdapter(private val dataSet: List<Restaurant>) :
         val restaurantName: TextView
         val restaurantAddress: TextView
         val restaurantDistance: TextView
+        val rvRatingBar: RecyclerView
         val restaurantImage = view.findViewById(R.id.food_image) as ImageView
 
         init {
             restaurantName = view.findViewById(R.id.restaurant_name)
             restaurantAddress = view.findViewById(R.id.restaurant_address)
             restaurantDistance = view.findViewById(R.id.restaurant_distance)
+            rvRatingBar = view.findViewById(R.id.rv_rating)
         }
     }
 
@@ -41,10 +45,13 @@ class RestaurantAdapter(private val dataSet: List<Restaurant>) :
         viewHolder.restaurantAddress.text = restaurant.address
         viewHolder.restaurantDistance.text = ".3 Km Away"
         viewHolder.restaurantImage.setImageResource(restaurant.image)
-        viewHolder.restaurantImage.setOnClickListener {
-            val action=HomeFragmentDirections.actionHomeFragment2ToRestaurantFragment2(restaurant)
+        viewHolder.itemView.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragment2ToRestaurantFragment2(restaurant)
             viewHolder.itemView.findNavController().navigate(action)
         }
+        viewHolder.rvRatingBar.layoutManager =
+            LinearLayoutManager(viewHolder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
+        viewHolder.rvRatingBar.adapter = RatingAdapter(restaurant.rating)
     }
 
     override fun getItemCount(): Int {
