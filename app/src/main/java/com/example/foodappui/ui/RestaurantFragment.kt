@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foodappui.adapters.RatingAdapter
 import com.example.foodappui.adapters.RestaurantFoodAdapter
 import com.example.foodappui.databinding.FragmentRestaurantBinding
 import com.example.foodappui.model.Restaurant
@@ -45,6 +46,9 @@ class RestaurantFragment : Fragment() {
             val foodGridView: RecyclerView = binding?.gridRestaurant!!
             foodGridView.layoutManager = GridLayoutManager(requireContext(), 2)
             foodGridView.adapter = restaurantFoodAdapter
+            binding?.rvRating?.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            binding?.rvRating?.adapter = RatingAdapter(it.rating)
         }
 
         binding?.backBtn?.setOnClickListener {
