@@ -33,7 +33,7 @@
             android:text="@string/food_delivery"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/poppins_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/account"
             app:layout_constraintTop_toTopOf="parent"
@@ -47,8 +47,8 @@
             android:layout_marginEnd="10dp"
             android:text="@string/cart"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -62,6 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:fontFamily="@font/poppins_medium"
         android:background="@drawable/ic_rounded_search_borded"
         android:drawableStart="@drawable/ic_search"
         android:drawableEnd="@drawable/ic_cancel"
@@ -74,13 +75,13 @@
         android:layout_marginHorizontal="20dp"
         android:text="@string/recent_orders"
         android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_recent_order"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
@@ -91,18 +92,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/restaurants"
         android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_restaurants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="5dp"
         android:orientation="vertical"
         tools:itemCount="10"
         tools:listitem="@layout/restaurant_item" />

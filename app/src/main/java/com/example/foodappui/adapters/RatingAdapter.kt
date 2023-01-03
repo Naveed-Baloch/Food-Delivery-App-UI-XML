@@ -2,28 +2,28 @@ package com.example.foodappui.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodappui.R
+import com.example.foodappui.databinding.RatingBarBinding
 
 class RatingAdapter(private val rating: Int) :
-    RecyclerView.Adapter<RatingAdapter.ViewHolder>() {
+    RecyclerView.Adapter<RatingAdapter.RatingViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val ratingStar = view.findViewById(R.id.rating_star) as ImageView
+    class RatingViewHolder(private val binding: RatingBarBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(){
+            binding.ratingStar.setImageResource(R.drawable.ic_star)
+        }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.rating_bar, viewGroup, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RatingViewHolder {
+        val binding = RatingBarBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        return RatingViewHolder(binding)
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.ratingStar.setImageResource(R.drawable.ic_star)
+    override fun onBindViewHolder(viewHolder: RatingViewHolder, position: Int) {
+        viewHolder.bind()
     }
 
     override fun getItemCount(): Int {

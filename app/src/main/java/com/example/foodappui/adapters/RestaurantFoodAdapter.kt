@@ -2,46 +2,38 @@ package com.example.foodappui.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foodappui.R
+import com.example.foodappui.databinding.FoodItemBinding
+import com.example.foodappui.databinding.RestaurantItemBinding
 import com.example.foodappui.model.Food
 import com.example.foodappui.model.Restaurant
-import com.example.foodappui.ui.HomeFragmentDirections
 
-class RestaurantFoodAdapter(private val dataSet: List<Food>) :
-    RecyclerView.Adapter<RestaurantFoodAdapter.ViewHolder>() {
+class RestaurantFoodAdapter(private val restaurants: List<Food>) :
+    RecyclerView.Adapter<RestaurantFoodAdapter.RestaurantVH>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val foodName: TextView
-        val price: TextView
-        val foodImage = view.findViewById(R.id.food_item) as ImageView
-
-        init {
-            foodName = view.findViewById(R.id.food_name)
-            price = view.findViewById(R.id.price)
+    class RestaurantVH(private val binding: FoodItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
+        fun bind(food: Food) {
+            binding.foodName.text = food.name
+            binding.price.text = food.price.toString()
+            binding.foodItem.setImageResource(food.image)
         }
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.food_item, viewGroup, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): RestaurantVH {
+        val binding =
+            FoodItemBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        return RestaurantVH(binding)
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val food:Food = dataSet[position]
-        viewHolder.foodName.text = food.name
-        viewHolder.price.text= food.price.toString()
-        viewHolder.foodImage.setImageResource(food.image)
+    override fun onBindViewHolder(viewHolder: RestaurantVH, position: Int) {
+        val food = restaurants[position]
+        viewHolder.bind(food)
     }
 
     override fun getItemCount(): Int {
-        return dataSet.size
+        return restaurants.size
     }
 }
